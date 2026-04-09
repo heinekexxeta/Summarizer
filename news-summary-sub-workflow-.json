@@ -1,0 +1,225 @@
+{
+  "updatedAt": "2026-03-30T12:58:27.973Z",
+  "createdAt": "2026-03-30T11:40:39.429Z",
+  "id": "dNxqpM7DPCRxgGgZ",
+  "name": "News Summary Sub Workflow",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rssUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        784,
+        352
+      ],
+      "id": "b747e521-9cbb-41c2-88c9-e6567f05038a",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "iFsaqGNxSeN1YmiH",
+          "mode": "list",
+          "cachedResultName": "News Summarisation",
+          "cachedResultUrl": "/projects/95Db7uZ59vsjQvIJ/datatables/iFsaqGNxSeN1YmiH"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "isActive",
+              "condition": "isTrue"
+            }
+          ]
+        },
+        "limit": 5
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        512,
+        352
+      ],
+      "id": "7e2a7940-6177-476b-9ea1-34f149afd809",
+      "name": "Get row(s)"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "78d3efe2-67c6-4d4c-8e00-8fc20433803f",
+  "activeVersionId": "5d5d889e-1baa-4826-8f94-469080615d8a",
+  "versionCounter": 18,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-03-30T11:40:39.429Z",
+      "createdAt": "2026-03-30T11:40:39.429Z",
+      "role": "workflow:owner",
+      "workflowId": "dNxqpM7DPCRxgGgZ",
+      "projectId": "95Db7uZ59vsjQvIJ",
+      "project": {
+        "updatedAt": "2026-02-06T13:49:49.702Z",
+        "createdAt": "2026-02-06T13:49:49.702Z",
+        "id": "95Db7uZ59vsjQvIJ",
+        "name": "Heinek Halwin Roshan <heinek.roshan@exxeta.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "48e5ff36-1002-4426-b02e-23e21bc395e6"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-03-30T12:03:39.198Z",
+    "createdAt": "2026-03-30T11:42:52.400Z",
+    "versionId": "5d5d889e-1baa-4826-8f94-469080615d8a",
+    "workflowId": "dNxqpM7DPCRxgGgZ",
+    "nodes": [
+      {
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          272,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.rssUrl }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          784,
+          352
+        ],
+        "id": "b747e521-9cbb-41c2-88c9-e6567f05038a",
+        "name": "RSS Read"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "iFsaqGNxSeN1YmiH",
+            "mode": "list",
+            "cachedResultName": "News Summarisation",
+            "cachedResultUrl": "/projects/95Db7uZ59vsjQvIJ/datatables/iFsaqGNxSeN1YmiH"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "isActive",
+                "condition": "isTrue"
+              }
+            ]
+          },
+          "limit": 5
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          512,
+          352
+        ],
+        "id": "7e2a7940-6177-476b-9ea1-34f149afd809",
+        "name": "Get row(s)"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Get row(s)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get row(s)": {
+        "main": [
+          [
+            {
+              "node": "RSS Read",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Heinek Halwin Roshan",
+    "name": "Version 1",
+    "description": "",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-30T12:03:39.188Z",
+        "id": 2048,
+        "workflowId": "dNxqpM7DPCRxgGgZ",
+        "versionId": "5d5d889e-1baa-4826-8f94-469080615d8a",
+        "event": "activated",
+        "userId": "48e5ff36-1002-4426-b02e-23e21bc395e6"
+      }
+    ]
+  }
+}
